@@ -1,5 +1,5 @@
 var passport = require("passport");
-var LocalStrategy = require("passport-local").Strategy;
+var LocalStrategy = require("passport-local").Strategy; //defines a local strategy class 
 
 var db = require("../models");
 
@@ -11,7 +11,7 @@ passport.use(new LocalStrategy(
   },
   function(email, password, done) {
     // When a user tries to sign in this code runs
-    db.User.findOne({
+    db.User.findOne({ //find first one where email matches. 
       where: {
         email: email
       }
@@ -19,17 +19,17 @@ passport.use(new LocalStrategy(
       // If there's no user with the given email
       if (!dbUser) {
         return done(null, false, {
-          message: "Incorrect email."
+          message: "Incorrect email."  //return wrong email 
         });
       }
       // If there is a user with the given email, but the password the user gives us is incorrect
       else if (!dbUser.validPassword(password)) {
         return done(null, false, {
-          message: "Incorrect password."
+          message: "Incorrect password."  //return wrong password
         });
       }
       // If none of the above, return the user
-      return done(null, dbUser);
+      return done(null, dbUser);  
     });
   }
 ));
