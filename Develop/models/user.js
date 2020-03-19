@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false,             //data table for email 
       unique: true,
       validate: {
         isEmail: true
@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     // The password cannot be null
     password: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING,         //data table for password
       allowNull: false
     }
   });
